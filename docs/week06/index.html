@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BMI計算ツール</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<div class="bg-slate-100 min-h-screen flex items-center justify-center">
+
+    <div class="bg-white p-8 rounded-xl shadow-lg w-80">
+        <h1 class="text-2xl font-bold text-center mb-6">BMI計算ツール</h1>
+
+        <div class="mb-4">
+            <label class="block mb-2">身長(cm)</label>
+            <input
+                id="height"
+                type="number"
+                class="w-full border rounded p-2"
+                placeholder="例: 170"
+            >
+        </div>
+
+        <div class="mb-4">
+            <label class="block mb-2">体重(kg)</label>
+            <input
+            id="weight"
+            type="number"
+            class="w-full border rounded p-2"
+            placeholder="例: 60"
+            >
+        </div>
+
+        <button
+            id="calcBtn"
+            class="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+        >
+        計算する
+        </button>
+
+        <div id="result" class="mt-6 text-center font-bold"></div>
+        </div>
+
+        <script>
+            const calcBtn = document.getElementById("calcBtn");
+            const result = document.getElementById("result");
+
+            calcBtn.addEventListener("click", () => {
+            const height = Number(document.getElementById("height").value);
+            const weight = Number(document.getElementById("weight").value);
+
+            if (!height || !weight || height <= 0 || weight <= 0) 
+            {
+                result.textContent =
+                "Error";
+                return;
+            }
+
+            const heightM = height / 100;
+            const bmi = weight / (heightM * heightM);
+
+            let judgment = "";
+
+            if (bmi < 18.5) 
+            {
+                judgment = "痩せ型";
+            } 
+            else if (bmi < 25)
+            {
+                judgment = "普通";
+            } 
+            else
+            {
+                judgment = "肥満";
+            }
+
+            result.textContent =
+        `   BMI: ${bmi.toFixed(1)} ／ 判定: ${judgment}`;
+            });
+        </script>
+    </div>    
+</div>
+</html>
