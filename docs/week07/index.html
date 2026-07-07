@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TODOリスト</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: sans-serif;
+      background: #f1f5f9;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .input-area {
+      display: flex;
+      gap: 10px;
+    }
+
+    input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+      background: #2563eb;
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 20px;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #f8fafc;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    .task-text {
+      flex: 1;
+    }
+
+    .complete {
+      text-decoration: line-through;
+      color: gray;
+    }
+
+    .complete-btn {
+      background: #16a34a;
+    }
+
+    .delete-btn {
+      background: #dc2626;
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <div class="container">
+
+    <h1>TODO List</h1>
+
+    <div class="input-area">
+      <input id="taskInput" type="text" placeholder="タスクを入力してください">
+      <button id="addButton">追加</button>
+    </div>
+
+
+    <ul id="taskList"></ul>
+
+
+  </div>
+
+
+
+<script>
+
+  // 要素を取得
+  const taskInput = document.querySelector("#taskInput");
+  const addButton = document.querySelector("#addButton");
+  const taskList = document.querySelector("#taskList");
+
+
+  // 追加ボタンを押した時
+  addButton.addEventListener("click", function() {
+
+
+    // 入力内容を取得
+    const task = taskInput.value.trim();
+
+
+    // 空の場合は追加しない
+    if (task === "") {
+      return;
+    }
+
+
+    // li作成
+    const li = document.createElement("li");
+
+
+    // タスク文字作成
+    const span = document.createElement("span");
+    span.textContent = task;
+    span.classList.add("task-text");
+
+
+    // 完了ボタン作成
+    const completeButton = document.createElement("button");
+    completeButton.textContent = "完了";
+    completeButton.classList.add("complete-btn");
+
+
+    // 完了ボタン処理
+    completeButton.addEventListener("click", function() {
+
+      span.classList.toggle("complete");
+
+    });
+
+
+
+    // 削除ボタン作成
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "削除";
+    deleteButton.classList.add("delete-btn");
+
+
+
+    // 削除処理
+    deleteButton.addEventListener("click", function() {
+
+
+      const confirmDelete = confirm(
+        "このタスクを削除しますか？"
+      );
+
+
+      if (confirmDelete) {
+        li.remove();
+      }
+
+
+    });
+
+
+
+    // liに追加
+    li.appendChild(span);
+    li.appendChild(completeButton);
+    li.appendChild(deleteButton);
+
+
+    // リストに追加
+    taskList.appendChild(li);
+
+
+
+    // 入力欄を空にする
+    taskInput.value = "";
+
+
+  });
+
+
+</script>
+
+
+</body>
+</html>
