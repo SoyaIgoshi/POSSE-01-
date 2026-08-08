@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Members</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-zinc-100 min-h-screen">
+
+  <main class="max-w-4xl mx-auto px-4 py-8">
+
+    <!-- タイトル -->
+    <h1 class="text-3xl font-bold text-center text-zinc-800 mb-8">
+      Team Members
+    </h1>
+
+    <!-- メンバーカードを表示する場所 -->
+    <div
+      id="member-list"
+      class="grid grid-cols-1 md:grid-cols-2 gap-6"
+    ></div>
+
+  </main>
+
+  <script>
+    // メンバーデータ
+    const members = [
+      {
+        name: "田中太郎",
+        role: "エンジニア",
+        comment: "使いやすいサービスを作ることを目指しています。"
+      },
+      {
+        name: "佐藤花子",
+        role: "デザイナー",
+        comment: "見やすくて分かりやすいデザインを考えています。"
+      },
+      {
+        name: "鈴木一郎",
+        role: "エンジニア",
+        comment: "新しい技術を学びながら開発しています。"
+      },
+      {
+        name: "高橋美咲",
+        role: "プランナー",
+        comment: "チームでアイデアを形にすることが好きです。"
+      },
+      {
+        name: "伊藤健太",
+        role: "デザイナー",
+        comment: "ユーザー目線を大切にしたデザインを作ります。"
+      }
+    ];
+
+    // カードを表示する場所を取得
+    const memberList = document.querySelector("#member-list");
+
+    // 配列のデータを1人ずつ処理
+    members.forEach((member) => {
+
+      // カードを作成
+      const card = document.createElement("div");
+
+      // Tailwind CSSでカードのデザインを設定
+      card.className = "bg-white rounded-lg shadow p-6";
+
+      // カードの中身を作成
+      card.innerHTML = `
+        <h2 class="text-xl font-bold text-zinc-800 mb-2">
+          ${member.name}
+        </h2>
+
+        <p class="text-blue-600 font-semibold mb-3">
+          ${member.role}
+        </p>
+
+        <p class="text-zinc-600">
+          ${member.comment}
+        </p>
+      `;
+
+      // 作成したカードをページに追加
+      memberList.appendChild(card);
+    });
+  </script>
+
+</body>
+</html>
