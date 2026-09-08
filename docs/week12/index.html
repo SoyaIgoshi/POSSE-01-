@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>私のポートフォリオ</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Splide CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+  <!-- ヘッダー -->
+  <header class="bg-white border-b py-12 text-center">
+    <h1 class="text-3xl font-bold mb-2">ごしごしのポートフォリオ</h1>
+    <p class="text-gray-600 text-sm">POSSE③青春中！</p>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 py-8 space-y-12">
+
+    <!-- 自己紹介 -->
+    <section class="bg-white p-6 rounded-lg shadow-sm">
+      <h2 class="text-xl font-bold mb-4 border-b pb-2 text-blue-600">自己紹介</h2>
+      <p class="leading-relaxed">
+        はじめまして！大学生で、プログラミングコミュニティ「POSSE」に所属しています。<br>
+        今はHTML、CSS、JavaScriptの基礎を学んでいて、Webサイトを作る楽しさを実感しています。
+      </p>
+    </section>
+
+    <!-- スキルリスト -->
+    <section>
+      <h2 class="text-xl font-bold mb-4 text-blue-600">できること（スキル）</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        
+        <!-- アニメーション1：浮き上がる -->
+        <div class="bg-white p-4 rounded shadow-sm border border-gray-200 transition-all duration-300 hover:-translate-y-2">
+          <h3 class="font-bold text-lg text-blue-500 mb-1">HTML / CSS</h3>
+          <p class="text-xs text-gray-600">基本的なWebページの見た目を作ることができます。</p>
+        </div>
+
+        <!-- アニメーション2：ちょっと大きくなる -->
+        <div class="bg-white p-4 rounded shadow-sm border border-gray-200 transition-all duration-300 hover:scale-105">
+          <h3 class="font-bold text-lg text-blue-500 mb-1">Tailwind CSS</h3>
+          <p class="text-xs text-gray-600">クラス名を使ってスピーディーにデザインを整えられます。</p>
+        </div>
+
+        <div class="bg-white p-4 rounded shadow-sm border border-gray-200 transition-all duration-300 hover:-translate-y-2">
+          <h3 class="font-bold text-lg text-blue-500 mb-1">JavaScript</h3>
+          <p class="text-xs text-gray-600">Splideなどのライブラリを使って動くWebサイトを作れます。</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 作品スライダー -->
+    <section>
+      <h2 class="text-xl font-bold mb-4 text-blue-600">作った作品</h2>
+
+      <div class="splide">
+        <div class="splide__track rounded-lg shadow">
+          <ul class="splide__list">
+            
+            <!-- 発展：group と group-hover を使ったホバー演出 -->
+            <li class="splide__slide">
+              <div class="group relative bg-gray-300 h-64 flex items-center justify-center">
+                <img src="./新ハ写真４.jpg">
+                <span class="text-2xl font-bold text-gray-600">作品 1</span>
+                <div class="absolute inset-0 bg-black/70 flex flex-col items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <p class="font-bold mb-1">ポートフォリオサイト</p>
+                  <span class="text-xs bg-blue-500 px-3 py-1 rounded">詳細を見る</span>
+                </div>
+              </div>
+            </li>
+
+            <li class="splide__slide">
+              <div class="group relative bg-gray-400 h-64 flex items-center justify-center">
+                <img src="./新ハ写真１０.jpg">
+                <span class="text-2xl font-bold text-white">作品 2</span>
+                <div class="absolute inset-0 bg-black/70 flex flex-col items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <p class="font-bold mb-1">練習で作ったページ</p>
+                  <span class="text-xs bg-blue-500 px-3 py-1 rounded">詳細を見る</span>
+                </div>
+              </div>
+            </li>
+
+            <li class="splide__slide">
+              <div class="group relative bg-gray-500 h-64 flex items-center justify-center">
+                <img src="./新ハ写真コメダ.jpg">
+                <span class="text-2xl font-bold text-white">作品 3</span>
+                <div class="absolute inset-0 bg-black/70 flex flex-col items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <p class="font-bold mb-1">チェックテスト課題</p>
+                  <span class="text-xs bg-blue-500 px-3 py-1 rounded">詳細を見る</span>
+                </div>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- フッター -->
+  <footer class="bg-white border-t py-6 text-center text-xs text-gray-500">
+    <p>&copy; ５４５４　profile</p>
+  </footer>
+
+  <!-- Splide JS -->
+  <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+  
+  <script>
+    // Splideの初期化
+    new Splide('.splide', {
+      type: 'loop',
+      autoplay: true,
+      interval: 3000,
+    }).mount();
+  </script>
+</body>
+</html>
